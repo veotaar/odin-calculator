@@ -45,3 +45,20 @@ keypad.addEventListener("click", function (e) {
     editScreen.textContent = displayValue;
   }
 });
+
+const clear = function () {
+  displayValue = "";
+  editScreen.textContent = displayValue;
+};
+
+const del = function () {
+  if (displayValue === "") return;
+
+  let temp = displayValue.split("");
+  temp.pop();
+  displayValue = temp.join("");
+  editScreen.textContent = displayValue;
+};
+
+deleteButton.addEventListener("click", del);
+clearButton.addEventListener("click", clear);
