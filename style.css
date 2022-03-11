@@ -83,8 +83,8 @@ body {
 .key[data-key="add"] {
   grid-area: add;
 }
-.key[data-key="substract"] {
-  grid-area: substract;
+.key[data-key="subtract"] {
+  grid-area: subtract;
 }
 .key[data-key="divide"] {
   grid-area: divide;
@@ -116,7 +116,7 @@ body {
     "clear clear delete delete"
     "seven eight nine divide"
     "four five six multiply"
-    "one two three substract"
+    "one two three subtract"
     "dot zero equals add";
   gap: 1.6rem;
 }
@@ -127,4 +127,11 @@ body {
   align-items: center;
   background-color: #2a9da5;
   border-radius: inherit;
+  color: inherit;
+  font-size: inherit;
+  cursor: pointer;
+}
+
+.keypad > *:hover {
+  background-color: #34c5cf;
 }
