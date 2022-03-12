@@ -10,10 +10,9 @@
   </head>
   <body>
     <main class="main calculator border-radius-sm">
-      <section class="screen border-radius-sm">
-        <div class="screen--edit">68+58</div>
-        <div class="screen--result">42</div>
-      </section>
+      <section class="screen border-radius-sm">0</section>
+      <!-- <div class="screen--result">42</div> -->
+
       <section class="keypad border-radius-sm">
         <button class="key" data-key="0" data-type="digit" data-keycode="96">
           0
@@ -50,6 +49,7 @@
           data-key="add"
           data-type="operator"
           data-keycode="107"
+          id="plus"
         >
           &plus;
         </button>
@@ -58,6 +58,7 @@
           data-key="subtract"
           data-type="operator"
           data-keycode="109"
+          id="minus"
         >
           &minus;
         </button>
@@ -66,6 +67,7 @@
           data-key="divide"
           data-type="operator"
           data-keycode="111"
+          id="divide"
         >
           &divide;
         </button>
@@ -74,10 +76,11 @@
           data-key="multiply"
           data-type="operator"
           data-keycode="106"
+          id="multiply"
         >
           &times;
         </button>
-        <button class="key" data-key="equals" data-keycode="13">
+        <button class="key" data-key="equals" data-keycode="13" id="equals">
           &equals;
         </button>
         <button class="key" data-key="." data-type="digit" data-keycode="108">

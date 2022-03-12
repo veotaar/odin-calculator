@@ -1,8 +1,9 @@
-const editScreen = document.querySelector(".screen--edit");
-const resultScreen = document.querySelector(".screen--result");
+const screen = document.querySelector(".screen");
 const keypad = document.querySelector(".keypad");
 const clearButton = document.querySelector("#clear");
 const deleteButton = document.querySelector("#delete");
+const operatorButtons = document.querySelectorAll('.key[data-type="operator"]');
+const equalsButton = document.querySelector("#equals");
 
 const add = (a, b) => a + b;
 const subtract = (a, b) => a - b;
@@ -36,29 +37,85 @@ const operate = function (operator, a, b) {
 };
 
 let displayValue = "";
+let firstNumber;
+let operator;
+let result;
+let isOperatorClicked = false;
+let executeSummary;
 
+// digit button
 keypad.addEventListener("click", function (e) {
   if (e.target.classList.contains("key") && e.target.dataset.type === "digit") {
     let key = e.target.dataset.key;
     if (key === "." && displayValue.includes(".")) return;
+
     displayValue = displayValue.concat(key);
-    editScreen.textContent = displayValue;
+    screen.textContent = displayValue;
   }
 });
 
-const clear = function () {
+const handleOperator = function () {
+  if (isOperatorClicked) execute();
+  firstNumber = Number(screen.textContent);
+  operator = this.dataset.key;
   displayValue = "";
-  editScreen.textContent = displayValue;
+  isOperatorClicked = true;
 };
 
+const execute = function () {
+  if (
+    displayValue === "" ||
+    firstNumber === undefined ||
+    operator === undefined
+  )
+    return;
+  const secondNumber = Number(displayValue);
+  result = operate(operator, firstNumber, secondNumber);
+  isOperatorClicked = false;
+
+  executeSummary = `EXECUTED: 
+    firstNumber: ${firstNumber}, 
+    secondNumber: ${secondNumber}, 
+    operator: ${operator}, 
+    result: ${result}`;
+  screen.textContent = result;
+  displayValue = "";
+  firstNumber = result;
+};
+
+operatorButtons.forEach((button) =>
+  button.addEventListener("click", handleOperator)
+);
+
+equalsButton.addEventListener("click", execute);
+
+// Clear button
+const clear = function () {
+  displayValue = "";
+  screen.textContent = displayValue;
+  isOperatorClicked = false;
+};
+
+// Backspace button
 const del = function () {
   if (displayValue === "") return;
 
   let temp = displayValue.split("");
   temp.pop();
   displayValue = temp.join("");
-  editScreen.textContent = displayValue;
+  screen.textContent = displayValue;
 };
 
 deleteButton.addEventListener("click", del);
 clearButton.addEventListener("click", clear);
+
+keypad.addEventListener("click", function () {
+  console.clear();
+  console.log("displayValue: ", displayValue);
+  console.log("firstNumber: ", firstNumber);
+  console.log("operator: ", operator);
+  console.log("result: ", result);
+  console.log("isOperatorClicked: ", isOperatorClicked);
+  console.log("----------------------");
+  console.log(executeSummary);
+});
