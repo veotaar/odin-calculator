@@ -11,7 +11,7 @@ const multiply = (a, b) => a * b;
 
 // divide() returns a string
 const divide = function (a, b) {
-  if (b === 0) return "Cannot divide by zero";
+  if (b === 0) return "Infinity";
 
   return (a / b).toFixed(2);
 };

@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Odin Calculator</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap"
+      rel="stylesheet"
+    />
     <script src="index.js" defer></script>
   </head>
   <body>
@@ -13,7 +19,7 @@
       <section class="screen border-radius-sm">0</section>
       <!-- <div class="screen--result">42</div> -->
 
-      <section class="keypad border-radius-sm">
+      <section class="keypad">
         <button class="key" data-key="0" data-type="digit" data-keycode="96">
           0
         </button>
@@ -80,17 +86,35 @@
         >
           &times;
         </button>
-        <button class="key" data-key="equals" data-keycode="13" id="equals">
+        <button
+          class="key"
+          data-key="equals"
+          data-type="operator"
+          data-keycode="13"
+          id="equals"
+        >
           &equals;
         </button>
         <button class="key" data-key="." data-type="digit" data-keycode="108">
           &period;
         </button>
-        <button class="key" data-key="delete" id="delete" data-keycode="8">
-          BACKSPACE
+        <button
+          class="key"
+          data-key="delete"
+          data-type="special"
+          id="delete"
+          data-keycode="8"
+        >
+          DEL
         </button>
-        <button class="key" data-key="clear" id="clear" data-keycode="46">
-          CLEAR
+        <button
+          class="key"
+          data-key="clear"
+          data-type="special"
+          id="clear"
+          data-keycode="46"
+        >
+          CLR
         </button>
       </section>
     </main>
